@@ -1,57 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { Fragment } from "react";
+// import logo from "./logo.svg";
+// import { Counter } from "./features/counter/Counter";
+import "./App.css";
+
+// import { NavBar } from "./components/navBar/navBar";
+import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
+import { AppBar, TextField } from "@mui/material";
+import { Home } from "./components/home/home";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { Container } from "@mui/system";
+// import { Home } from "components/home/home.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Router>
+      <AppBar position="relative">
+        <nav>
+          <Link to="/">home</Link>
+          <Link to="/about">about</Link>
+          <Container align="right">
+            <SearchOutlinedIcon></SearchOutlinedIcon>
+            <TextField
+              id="standard-basic"
+              label="Standard"
+              variant="standard"
+              align="right"
+            ></TextField>
+          </Container>
+          {/* <NavBar /> */}
+        </nav>
+      </AppBar>
+      <Routes>
+        <Route path={"/"} element={<Home></Home>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
