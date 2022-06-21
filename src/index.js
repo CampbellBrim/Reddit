@@ -18,7 +18,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App style={{ backgroundColor: "aliceblue" }} />
     </Provider>
   </React.StrictMode>
 );

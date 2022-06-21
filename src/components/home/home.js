@@ -1,4 +1,11 @@
-import { Container, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -54,12 +61,20 @@ export const Home = () => {
   // pretty sure is supposed to return object with api call info
   // console.log(dataObject);
   // const subreddits = dataObject.data;
-  console.log(typeof dataObject);
+  // console.log(typeof dataObject);
   console.log(dataObject);
 
   if (loading) {
-    console.log(dataObject);
-    return <div style={{ marginTop: "150px" }}>Loading</div>;
+    // console.log(dataObject);
+    return (
+      <Container style={{ marginTop: "150px" }}>
+        <Grid container>
+          <Grid item align="center">
+            <Typography>Loading</Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    );
   }
 
   // for some reason the code is running a bunch of
@@ -68,24 +83,68 @@ export const Home = () => {
 
   // this fixes the issue but is not a good fix
   if (typeof dataObject.data !== "undefined") {
-    // alert(JSON.stringify(dataObject.data, null, 4));
-    // console.log(dataObject.data.children);
+    // i think the return statement is placed incorrectly to check if subreddit posts have images.
     return (
       <Container>
         <Grid container spacing={4}>
+          {/* <img src="https://i.redd.it/kb2c2m7nvm691.jpg" alt="totally"></img> */}
           {dataObject.data.children.slice(0, 15).map((subreddit) => (
-            <Grid item xs={12} sm={6} md={6} key={subreddit.data.id}>
-              <Paper
+            // let image = subreddit.data ? <img></img> : null;
+
+            <Grid item xs={12} sm={12} md={6} key={subreddit.data.id}>
+              {/* image was not loading because it did not fit the container i believe. find a way to size the images appropriately */}
+              <Card>
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography
+                    component={"h4"}
+                    variant={"h4"}
+                    sx={{ backgroundColor: "ivory" }}
+                    align={"center"}
+                  >
+                    {subreddit.data.title}
+                  </Typography>
+                  <Typography>{subreddit.data.post_hint}</Typography>
+                  <Typography>
+                    {JSON.stringify(subreddit.data.is_video)}
+                  </Typography>
+                  <img
+                    src={subreddit.data.url}
+                    alt="yes sir"
+                    style={{ maxWidth: "60vw", maxHeight: "70vh" }}
+                  />
+                </CardContent>
+                <CardMedia
+                  align="center"
+                  // component={subreddit.data.post_hint}
+                  image={subreddit.data.url}
+                  height="140"
+                  // style={{ maxWidth: "60vw", maxHeight: "70vh" }}
+                  alt="sure"
+                />
+              </Card>
+              {/* <Paper
                 elevation={6}
-                // gutterBottom
-                // gutterLeft
-                // gutterRight
-                // maxWidth="sm"
+                
               >
                 <Typography variant="h5" component="h3">
                   {subreddit.data.title}
                 </Typography>
-              </Paper>
+                {/* <img src={subreddit.data.preview.images[0].resolutions[0].url} alt="picture" /> */}
+              {/* <h1> */}
+              {/* {
+                    subreddit.data.preview.images[0].resolutions[0].url.split(
+                      "?"
+                    )[0]
+                  } */}
+              {/* {JSON.stringify(subreddit.data.url)}
+                </h1>
+                <img
+                  style={{ width: "100px" }}
+                  url={subreddit.data.url}
+                  alt="this is totally a deal"
+                ></img>
+                {/* subreddit.data.preview.images["0"].resulutions["0"].url */}
+              {/* </Paper> */}
             </Grid>
           ))}
         </Grid>
@@ -93,6 +152,30 @@ export const Home = () => {
     );
   }
 };
+{
+  /* <img src={subreddit.data.preview.images["0"]} alt={picture} ></img>  */
+}
+{
+  /* <img
+  src={
+    subreddit.data.preview.images["0"].resolutions.url[0].split(
+      "?"
+    )[0]
+  }
+  alt={"picture"}
+></img> */
+}
+{
+  /* <img
+  src={
+    subreddit.data.preview.images["0"].resolutions[0].url.split(
+      "?"
+    )[0]
+  }
+  alt={"picture"}
+></img> */
+}
+
 // return <div>{JSON.stringify(dataObject.data)}</div>;
 // {/* {subreddits.map((subreddit) => (
 //   <Paper
