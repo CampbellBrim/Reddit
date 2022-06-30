@@ -4,10 +4,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // https://www.reddit.com/r/popular.json
 
+// eventually this wil be managed by search slice of state
+const subredditSearch = "popular";
+
 export const loadAllPreviews = createAsyncThunk(
   "subredditPreviews/loadAllPreviews",
   async () => {
-    const data = await fetch("https://www.reddit.com/r/popular.json");
+    const data = await fetch(
+      `https://www.reddit.com/r/${subredditSearch}.json`
+    );
     const json = await data.json();
     return json;
   }
@@ -43,11 +48,13 @@ const sliceOptions = {
   },
 };
 
-const previewsSLice = createSlice(sliceOptions);
+const previewsSlice = createSlice(sliceOptions);
 
 export const selectPreviews = (state) => state.subredditPreviews.subreddits;
+
+// export const selectSubredditSearch = (state) => state.subredditPreviews.
 
 export const isLoading = (state) =>
   state.subredditPreviews.isLoadingSubredditsPreviews;
 
-export default previewsSLice.reducer;
+export default previewsSlice.reducer;
