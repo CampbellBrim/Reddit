@@ -5,14 +5,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // https://www.reddit.com/r/popular.json
 
 // eventually this wil be managed by search slice of state
-const subredditSearch = "popular";
+// const subredditSearch = "popular";
 
 export const loadAllPreviews = createAsyncThunk(
   "subredditPreviews/loadAllPreviews",
-  async () => {
-    const data = await fetch(
-      `https://www.reddit.com/r/${subredditSearch}.json`
-    );
+  async (arg) => {
+    const data = await fetch(`https://www.reddit.com/${arg.subreddit}.json`);
     const json = await data.json();
     return json;
   }
