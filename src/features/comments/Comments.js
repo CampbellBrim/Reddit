@@ -12,7 +12,7 @@ import {
 import { useParams } from "react-router-dom";
 
 import { Container, Grid, Typography } from "@mui/material";
-import { Post } from "../../components/post/post";
+import { Post } from "../../components/post/Post";
 import { Comment } from "../../components/comment/Comment";
 
 import { v4 } from "uuid";
@@ -53,65 +53,25 @@ export const Comments = () => {
 
   if (loading) {
     return (
-      // <Container style={{ marginTop: "150px" }}>
-      //   <Grid container>
-      //     <Grid item align="center">
-      //       <Typography>Loading</Typography>
-      //     </Grid>
-      //   </Grid>
-      // </Container>
       <Container
         sx={{ marginTop: "50vh", marginLeft: "45vw", position: "absolute" }}
       >
-        <SyncLoader
-          // sx={{ top: "50vh", right: "50vw" }}
-          color="blue"
-        />
+        <SyncLoader color="blue" />
       </Container>
     );
   }
   if (typeof comments !== "undefined") {
-    // if (comments?) {
     return (
       <>
         <Container>
           <Grid
             container
-            // xs={12}
             spacing={2}
             alignItems="center"
-            // justifyItems={"center"}
             justifyContent={"center"}
-            // direction="column"
           >
-            {/* <p>{JSON.stringify(comments)}</p> */}
             <Post key={v4()} page={"comments"} props={comments[0]}></Post>
-            {/* action color is gray and primary is blue */}
-            {/* <Container align="center">
-            <IconButton onClick={handleUp}>
-              <ArrowUpwardOutlinedIcon
-                color={upArrow ? "primary" : "action"}
-                //   onClick={handleUp}
-              ></ArrowUpwardOutlinedIcon>
-            </IconButton>
-            <IconButton onClick={handleDown}>
-              <ArrowDownwardOutlinedIcon
-                color={downArrow ? "primary" : "action"}
-                //   onClick={handleDown}
-              ></ArrowDownwardOutlinedIcon>
-            </IconButton>
 
-            <IconButton>
-            <Typography>{comments[0].ups}</Typography>
-            </IconButton>
-
-            <IconButton>
-              <ModeCommentOutlinedIcon></ModeCommentOutlinedIcon>
-            </IconButton>
-            <IconButton>
-              <Typography>{comments[0].num_comments}</Typography>
-              </IconButton>
-            </Container> */}
             {comments[1].data.children.slice(0, 10).map((item, index) => {
               return <Comment key={v4()} props={item} align="center"></Comment>;
             })}
