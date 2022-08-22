@@ -14,7 +14,7 @@ import { Comments } from "./features/comments/Comments";
 import Select from "@mui/material/Select";
 
 function App() {
-  const [subreddit, setSubreddit] = useState("r/popular");
+  const [subreddit, setSubreddit] = useState("r/funny");
   const handleChange = (e) => {
     const selected = e.target.value;
     setSubreddit(selected);
@@ -62,8 +62,8 @@ function App() {
             <FormControl fullWidth variant="filled">
               <InputLabel>subreddit</InputLabel>
               <Select onChange={handleChange} value={subreddit}>
-                <MenuItem value={"r/popular"}>r/popular</MenuItem>
                 <MenuItem value={"r/funny"}>r/funny</MenuItem>
+                <MenuItem value={"r/popular"}>r/popular</MenuItem>
                 <MenuItem value={"r/gaming"}>r/gaming</MenuItem>
                 <MenuItem value={"r/aww"}>r/aww</MenuItem>
                 <MenuItem value={"r/science"}>r/science</MenuItem>

@@ -78,9 +78,14 @@ export const Post = ({ props, page }) => {
               ) : hint === "hosted:video" && props.media ? (
                 <Container
                   align="center"
-                  // style={{ maxHeight: "80vh" }}
+                  // style={{ maxHeight: "50vh" }}
                 >
-                  <video width="750" height="400" controls autoPlay>
+                  <video
+                    // width="auto" height="auto"
+                    controls
+                    autoPlay
+                    style={{ maxHeight: "50vw", width: "auto", height: "auto" }}
+                  >
                     <source
                       src={props.media.reddit_video.fallback_url}
                       type="video/mp4"
@@ -159,11 +164,12 @@ export const Post = ({ props, page }) => {
               props.data.children[0].data.secure_media ? (
               <Container align="center" style={{ margin: "auto" }}>
                 <video
-                  width="750"
-                  height="400"
+                  // width="auto"
+                  // height="auto"
                   controls
                   autoPlay
-                  style={{ maxWidth: "80vw" }}
+                  // style={{ maxWidth: "80vw" }}
+                  style={{ maxHeight: "50vw", width: "auto", height: "auto" }}
                 >
                   <source
                     src={
