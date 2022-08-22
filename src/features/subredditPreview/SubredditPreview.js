@@ -9,7 +9,7 @@ import {
   isLoading,
   loadAllPreviews,
   selectPreviews,
-} from "./SubredditPreviewSlice";
+} from "./subredditPreviewSlice";
 
 import { SyncLoader } from "react-spinners";
 // import { Post } from "../../components/post/Post";
