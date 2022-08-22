@@ -1,9 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useParams } from "react-router-dom";
-
-// only need use params here?
-
-//   let { subreddit, id } = useParams();
 
 export const loadComments = createAsyncThunk(
   "commentsPage/loadComments",
@@ -25,25 +20,21 @@ const sliceOptions = {
   initialState: {
     comments: undefined,
     isLoadingComments: false,
-    // hasError: false,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadComments.pending, (state, action) => {
+      .addCase(loadComments.pending, (state) => {
         state.isLoadingComments = true;
         state.hasError = false;
       })
-      .addCase(loadComments.rejected, (state, action) => {
+      .addCase(loadComments.rejected, (state) => {
         state.isLoadingComments = false;
         state.hasError = true;
-        // state.comments = action.payload;
       })
       .addCase(loadComments.fulfilled, (state, action) => {
         state.isLoadingComments = false;
         state.hasError = false;
-        // state is not updating correctly
         state.comments = action.payload;
-        // state.subreddits = ["goodbye"];
       });
   },
 };

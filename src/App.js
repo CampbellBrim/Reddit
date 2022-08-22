@@ -14,7 +14,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Home } from "./components/home/home";
+// import { Home } from "./components/home/home";
+import { SubredditPreview } from "./features/subredditPreview/SubredditPreview";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Container } from "@mui/system";
 import { Comments } from "./features/comments/Comments";
@@ -97,7 +98,10 @@ function App() {
         </Grid>
       </AppBar>
       <Routes>
-        <Route path={"/"} element={<Home subreddit={subreddit}></Home>}></Route>
+        <Route
+          path={"/"}
+          element={<SubredditPreview subreddit={subreddit}></SubredditPreview>}
+        ></Route>
         <Route
           path={"/:subreddit/comments/:id/:hint"}
           element={<Comments />}

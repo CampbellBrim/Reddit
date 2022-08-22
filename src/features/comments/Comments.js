@@ -1,7 +1,4 @@
-// needs to make a call to fetch the current page
-
-// import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   isLoadingComments,
@@ -11,45 +8,22 @@ import {
 
 import { useParams } from "react-router-dom";
 
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Post } from "../../components/post/Post";
 import { Comment } from "../../components/comment/Comment";
 
 import { v4 } from "uuid";
 import { SyncLoader } from "react-spinners";
 
-import { IconButton } from "@mui/material";
-
-import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
-import ArrowDownwardOutlinedIcon from "@mui/icons-material/ArrowDownwardOutlined";
-import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-
 export const Comments = () => {
   const dispatch = useDispatch();
   const comments = useSelector(selectComments);
   const loading = useSelector(isLoadingComments);
   let { subreddit, id } = useParams();
-  // let { id } = useParams();
 
   useEffect(() => {
     dispatch(loadComments({ subreddit: subreddit, id: id }));
   }, [useEffect, subreddit, id]);
-
-  // console.log(comments);
-
-  const [upArrow, setUpArrow] = useState(false);
-  const [downArrow, setDownArrow] = useState(false);
-
-  const handleUp = (e) => {
-    e.preventDefault();
-    setUpArrow(true);
-    setDownArrow(false);
-  };
-  const handleDown = (e) => {
-    e.preventDefault();
-    setUpArrow(false);
-    setDownArrow(true);
-  };
 
   if (loading) {
     return (
@@ -72,7 +46,7 @@ export const Comments = () => {
           >
             <Post key={v4()} page={"comments"} props={comments[0]}></Post>
 
-            {comments[1].data.children.slice(0, 10).map((item, index) => {
+            {comments[1].data.children.slice(0, 10).map((item) => {
               return <Comment key={v4()} props={item} align="center"></Comment>;
             })}
           </Grid>

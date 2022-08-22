@@ -1,11 +1,4 @@
-// needs to load posts from a specified catagory. default to most popular on home.
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-// https://www.reddit.com/r/popular.json
-
-// eventually this wil be managed by search slice of state
-// const subredditSearch = "popular";
 
 export const loadAllPreviews = createAsyncThunk(
   "subredditPreviews/loadAllPreviews",
@@ -19,9 +12,6 @@ export const loadAllPreviews = createAsyncThunk(
 const sliceOptions = {
   name: "subredditPreviews",
   initialState: {
-    // subreddits: {
-    //   hi: "HI",
-    // },
     subreddits: ["hello"],
     isLoadingSubredditsPreviews: false,
     hasError: false,
@@ -39,9 +29,7 @@ const sliceOptions = {
       .addCase(loadAllPreviews.fulfilled, (state, action) => {
         state.isLoadingSubredditsPreviews = false;
         state.hasError = false;
-        // state is not updating correctly
         state.subreddits = action.payload;
-        // state.subreddits = ["goodbye"];
       });
   },
 };
@@ -49,8 +37,6 @@ const sliceOptions = {
 const previewsSlice = createSlice(sliceOptions);
 
 export const selectPreviews = (state) => state.subredditPreviews.subreddits;
-
-// export const selectSubredditSearch = (state) => state.subredditPreviews.
 
 export const isLoading = (state) =>
   state.subredditPreviews.isLoadingSubredditsPreviews;

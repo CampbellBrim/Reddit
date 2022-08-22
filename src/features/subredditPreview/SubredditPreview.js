@@ -1,21 +1,7 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import React, { useEffect } from "react";
+import { Container, Grid } from "@mui/material";
 
 import { v4 } from "uuid";
-
-import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
-import ArrowDownwardOutlinedIcon from "@mui/icons-material/ArrowDownwardOutlined";
-
-import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -23,19 +9,15 @@ import {
   isLoading,
   loadAllPreviews,
   selectPreviews,
-} from "../../features/subredditPreview/subredditPreviewSlice";
-// import { PreviewPost } from "../post/PreviewPost";
-
-import { useNavigate } from "react-router-dom";
+} from "./SubredditPreviewSlice";
 
 import { SyncLoader } from "react-spinners";
-import { Post } from "../post/Post";
+import { Post } from "../../components/post/Post";
 
-export const Home = ({ subreddit }) => {
+export const SubredditPreview = ({ subreddit }) => {
   const dispatch = useDispatch();
   const dataObject = useSelector(selectPreviews);
   const loading = useSelector(isLoading);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadAllPreviews({ subreddit: subreddit }));

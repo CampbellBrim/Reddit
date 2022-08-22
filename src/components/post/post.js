@@ -80,23 +80,7 @@ export const Post = ({ props, page }) => {
                   align="center"
                   // style={{ maxHeight: "80vh" }}
                 >
-                  <video
-                    // height="50%"
-                    // width="auto"
-                    // max-height={"150"}
-                    // style="width: 20, height: 20"
-                    // style={{ maxWidth: "100%", maxHeight: "100%" }}
-                    // height: auto;
-                    // max-width="100%"
-                    // max-width="50%"
-                    // width="30%"
-                    // height={"auto"}
-                    width="750"
-                    height="400"
-                    controls
-                    autoPlay
-                    // style={{ maxWidth: "80vw" }}
-                  >
+                  <video width="750" height="400" controls autoPlay>
                     <source
                       src={props.media.reddit_video.fallback_url}
                       type="video/mp4"
@@ -105,8 +89,7 @@ export const Post = ({ props, page }) => {
                 </Container>
               ) : props.post_hint === "link" ? (
                 <a href={props.url}>{props.url}</a>
-              ) : props.post_hint === undefined ? null : null // <p>{props.title}</p>
-              }
+              ) : props.post_hint === undefined ? null : null}
             </Container>
             <Container
               align="left"
