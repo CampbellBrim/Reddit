@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import subredditPreviewSlice from "../features/subredditPreview/SubredditPreviewSlice.js";
+import SubredditPreviewSlice from "../features/subredditPreview/SubredditPreviewSlice.js";
+// Cannot find file '../features/subredditPreview/SubredditPreviewSlice.js' in './src/app'.
 import commentsSlice from "../features/comments/CommentsSlice";
 
 export const store = configureStore({
   reducer: {
-    subredditPreviews: subredditPreviewSlice,
+    subredditPreviews: SubredditPreviewSlice,
     commentsPage: commentsSlice,
   },
 });

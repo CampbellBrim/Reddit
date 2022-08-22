@@ -9,7 +9,8 @@ import {
 import { useParams } from "react-router-dom";
 
 import { Container, Grid } from "@mui/material";
-import { Post } from "../../components/post/Post";
+// import { Post } from "../../components/post/Post";
+import { Post } from "../../components/post/post";
 import { Comment } from "../../components/comment/Comment";
 
 import { v4 } from "uuid";

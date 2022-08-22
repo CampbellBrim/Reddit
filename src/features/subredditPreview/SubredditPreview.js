@@ -12,7 +12,8 @@ import {
 } from "./SubredditPreviewSlice";
 
 import { SyncLoader } from "react-spinners";
-import { Post } from "../../components/post/Post";
+// import { Post } from "../../components/post/Post";
+import { Post } from "../../components/post/post.js";
 
 export const SubredditPreview = ({ subreddit }) => {
   const dispatch = useDispatch();

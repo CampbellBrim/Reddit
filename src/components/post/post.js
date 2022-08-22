@@ -24,11 +24,11 @@ export const Post = ({ props, page }) => {
     setUpArrow(false);
     setDownArrow(true);
   };
-  const hint =
+  let hint =
     page === "preview"
       ? props.post_hint
       : page === "comments"
-      ? useParams(hint)
+      ? useParams()
       : null;
 
   if (page === "preview") {
