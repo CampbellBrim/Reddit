@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-
 import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
 import {
   AppBar,
@@ -11,8 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { SubredditPreview } from "./features/subredditPreview/SubredditPreview";
-// import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-// import { Container } from "@mui/system";
 import { Comments } from "./features/comments/Comments";
 import Select from "@mui/material/Select";
 
