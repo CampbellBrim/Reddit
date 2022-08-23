@@ -5,7 +5,7 @@ export const Comment = ({ props }) => {
   return (
     <>
       <Grid item xl={12} xs={12}>
-        <Card>
+        <Card align="left">
           <Typography variant="h5" component="h4" style={{ marginLeft: "5px" }}>
             {props.data.author}
           </Typography>
