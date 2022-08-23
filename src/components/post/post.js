@@ -35,7 +35,7 @@ export const Post = ({ props, page }) => {
     return (
       <>
         <Grid item xs={12} xl={12}>
-          <Card>
+          <Card style={{ textAlign: "left" }}>
             <Container
               style={{
                 cursor: "pointer",
@@ -76,41 +76,37 @@ export const Post = ({ props, page }) => {
                     src={props.url}
                     alt={props.title}
                     style={{
-                      maxWidth: "70vw",
-                      maxHeight: "70vh",
+                      maxWidth: "80vw",
+                      maxHeight: "80vh",
                     }}
                   />
                 </Container>
               ) : hint === "hosted:video" && props.media ? (
-                // <Container
-                //   align="center"
-                //   style={{
-                //     paddingLeft: "0px ",
-                //     paddingRight: "0px ",
-                //     "& .MuiContainer-root": {
-                //       paddingLeft: "0px ",
-                //       paddingRight: "0px ",
-                //     },
-                //   }}
-                // >
-                <video
-                  controls
-                  autoPlay
+                <Container
+                  align="center"
                   style={{
-                    maxHeight: "70vh",
-                    maxWidth: "90vw",
-                    width: "auto",
-                    height: "auto",
-                    margin: "0px",
+                    paddingLeft: "0px ",
+                    paddingRight: "0px ",
                   }}
                 >
-                  <source
-                    src={props.media.reddit_video.fallback_url}
-                    type="video/mp4"
-                  />
-                </video>
-              ) : // </Container>
-              props.post_hint === "link" ? (
+                  <video
+                    controls
+                    autoPlay
+                    style={{
+                      maxHeight: "70vh",
+                      maxWidth: "90vw",
+                      width: "auto",
+                      height: "auto",
+                      margin: "0px",
+                    }}
+                  >
+                    <source
+                      src={props.media.reddit_video.fallback_url}
+                      type="video/mp4"
+                    />
+                  </video>
+                </Container>
+              ) : props.post_hint === "link" ? (
                 <a href={props.url} style={{ wordWrap: "break-word" }}>
                   {props.url}
                 </a>
@@ -154,7 +150,7 @@ export const Post = ({ props, page }) => {
     return (
       <>
         <Grid item xs={12} xl={12}>
-          <Card>
+          <Card style={{ textAlign: "left" }}>
             <Typography
               component={"h3"}
               variant={"h5"}
@@ -175,35 +171,41 @@ export const Post = ({ props, page }) => {
                   src={props.data.children[0].data.url}
                   alt={props.title}
                   style={{
-                    maxWidth: "70vw",
-                    maxHeight: "70vh",
+                    maxWidth: "80vw",
+                    maxHeight: "80vh",
                   }}
                 />
               </Container>
             ) : hint.hint === "hosted:video" &&
               props.data.children[0].data.secure_media ? (
-              // <Container align="center" style={{ margin: "auto" }}>
-              <video
-                controls
-                autoPlay
+              <Container
+                align="center"
                 style={{
-                  maxHeight: "70vh",
-                  maxWidth: "90vw",
-                  width: "auto",
-                  height: "auto",
-                  margin: "0px",
+                  paddingLeft: "0px ",
+                  paddingRight: "0px ",
                 }}
               >
-                <source
-                  src={
-                    props.data.children[0].data.secure_media.reddit_video
-                      .fallback_url
-                  }
-                  type="video/mp4"
-                />
-              </video>
-            ) : // </Container>
-            hint.hint === "link" ? (
+                <video
+                  controls
+                  autoPlay
+                  style={{
+                    maxHeight: "70vh",
+                    maxWidth: "90vw",
+                    width: "auto",
+                    height: "auto",
+                    margin: "0px",
+                  }}
+                >
+                  <source
+                    src={
+                      props.data.children[0].data.secure_media.reddit_video
+                        .fallback_url
+                    }
+                    type="video/mp4"
+                  />
+                </video>
+              </Container>
+            ) : hint.hint === "link" ? (
               <a href={props.url} style={{ wordWrap: "break-word" }}>
                 {props.url}
               </a>
