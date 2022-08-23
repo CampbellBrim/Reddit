@@ -26,11 +26,11 @@ export const SubredditPreview = ({ subreddit }) => {
 
   if (loading) {
     return (
-      <Container
-        sx={{ marginTop: "50vh", marginLeft: "45vw", position: "absolute" }}
-      >
-        <SyncLoader color="blue" />
-      </Container>
+      <SyncLoader
+        color="blue"
+        style={{ top: "50%", left: "50%", position: "absolute" }}
+      />
+      // {/* </Container> */}
     );
   }
 

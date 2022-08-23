@@ -48,7 +48,13 @@ function App() {
                   component={"h1"}
                   variant={"h5"}
                   sx={{ display: { xs: "block", md: "none" } }}
-                  style={{ color: "white", textDecoration: "none" }}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    // marginTop: "auto",
+                    marginTop: "10px",
+                    marginLeft: "10px",
+                  }}
                 >
                   RedditMinimal
                 </Typography>
