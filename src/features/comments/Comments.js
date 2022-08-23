@@ -37,7 +37,18 @@ export const Comments = () => {
   if (typeof comments !== "undefined") {
     return (
       <>
-        <Container>
+        {/* <Container
+          style={{
+            cursor: "pointer",
+            paddingLeft: "0px ",
+            paddingRight: "0px ",
+            "& .MuiContainer-root": {
+              paddingLeft: "0px ",
+              paddingRight: "0px ",
+            },
+          }}
+        > */}
+        <Container align="center">
           <Grid
             container
             spacing={2}
@@ -51,6 +62,7 @@ export const Comments = () => {
             })}
           </Grid>
         </Container>
+        {/* </Container> */}
       </>
     );
   }

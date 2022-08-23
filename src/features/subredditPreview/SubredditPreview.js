@@ -36,7 +36,7 @@ export const SubredditPreview = ({ subreddit }) => {
 
   if (typeof dataObject.data !== "undefined") {
     return (
-      <Container align="center" style={{ align: "center" }}>
+      <Container align="center">
         <Grid container spacing={2}>
           {dataObject.data.children.slice(0, 15).map((subreddit) => (
             <Post props={subreddit.data} page={"preview"} key={v4()}></Post>

@@ -182,27 +182,28 @@ export const Post = ({ props, page }) => {
               </Container>
             ) : hint.hint === "hosted:video" &&
               props.data.children[0].data.secure_media ? (
-              <Container align="center" style={{ margin: "auto" }}>
-                <video
-                  controls
-                  autoPlay
-                  style={{
-                    maxHeight: "70vh",
-                    maxWidth: "70vw",
-                    width: "auto",
-                    height: "auto",
-                  }}
-                >
-                  <source
-                    src={
-                      props.data.children[0].data.secure_media.reddit_video
-                        .fallback_url
-                    }
-                    type="video/mp4"
-                  />
-                </video>
-              </Container>
-            ) : hint.hint === "link" ? (
+              // <Container align="center" style={{ margin: "auto" }}>
+              <video
+                controls
+                autoPlay
+                style={{
+                  maxHeight: "70vh",
+                  maxWidth: "90vw",
+                  width: "auto",
+                  height: "auto",
+                  margin: "0px",
+                }}
+              >
+                <source
+                  src={
+                    props.data.children[0].data.secure_media.reddit_video
+                      .fallback_url
+                  }
+                  type="video/mp4"
+                />
+              </video>
+            ) : // </Container>
+            hint.hint === "link" ? (
               <a href={props.url} style={{ wordWrap: "break-word" }}>
                 {props.url}
               </a>
