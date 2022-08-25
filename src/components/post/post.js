@@ -24,21 +24,27 @@ export const Post = ({ props, page }) => {
     setUpArrow(false);
     setDownArrow(true);
   };
-  const hint =
+  let hint =
     page === "preview"
       ? props.post_hint
       : page === "comments"
-      ? useParams(hint)
+      ? useParams()
       : null;
 
   if (page === "preview") {
     return (
       <>
         <Grid item xs={12} xl={12}>
-          <Card>
+          <Card style={{ textAlign: "left" }}>
             <Container
               style={{
                 cursor: "pointer",
+                paddingLeft: "0px ",
+                paddingRight: "0px ",
+                "& .MuiContainer-root": {
+                  paddingLeft: "0px ",
+                  paddingRight: "0px ",
+                },
               }}
               onClick={() => {
                 navigate(
@@ -70,17 +76,30 @@ export const Post = ({ props, page }) => {
                     src={props.url}
                     alt={props.title}
                     style={{
-                      maxWidth: "50vw",
-                      maxHeight: "70vh",
+                      maxWidth: "80vw",
+                      maxHeight: "80vh",
                     }}
                   />
                 </Container>
               ) : hint === "hosted:video" && props.media ? (
                 <Container
                   align="center"
-                  // style={{ maxHeight: "80vh" }}
+                  style={{
+                    paddingLeft: "0px ",
+                    paddingRight: "0px ",
+                  }}
                 >
-                  <video width="750" height="400" controls autoPlay>
+                  <video
+                    controls
+                    autoPlay
+                    style={{
+                      maxHeight: "70vh",
+                      maxWidth: "90vw",
+                      width: "auto",
+                      height: "auto",
+                      margin: "0px",
+                    }}
+                  >
                     <source
                       src={props.media.reddit_video.fallback_url}
                       type="video/mp4"
@@ -88,7 +107,9 @@ export const Post = ({ props, page }) => {
                   </video>
                 </Container>
               ) : props.post_hint === "link" ? (
-                <a href={props.url}>{props.url}</a>
+                <a href={props.url} style={{ wordWrap: "break-word" }}>
+                  {props.url}
+                </a>
               ) : props.post_hint === undefined ? null : null}
             </Container>
             <Container
@@ -129,7 +150,7 @@ export const Post = ({ props, page }) => {
     return (
       <>
         <Grid item xs={12} xl={12}>
-          <Card>
+          <Card style={{ textAlign: "left" }}>
             <Typography
               component={"h3"}
               variant={"h5"}
@@ -150,20 +171,30 @@ export const Post = ({ props, page }) => {
                   src={props.data.children[0].data.url}
                   alt={props.title}
                   style={{
-                    maxWidth: "50vw",
-                    maxHeight: "70vh",
+                    maxWidth: "80vw",
+                    maxHeight: "80vh",
                   }}
                 />
               </Container>
             ) : hint.hint === "hosted:video" &&
               props.data.children[0].data.secure_media ? (
-              <Container align="center" style={{ margin: "auto" }}>
+              <Container
+                align="center"
+                style={{
+                  paddingLeft: "0px ",
+                  paddingRight: "0px ",
+                }}
+              >
                 <video
-                  width="750"
-                  height="400"
                   controls
                   autoPlay
-                  style={{ maxWidth: "80vw" }}
+                  style={{
+                    maxHeight: "70vh",
+                    maxWidth: "90vw",
+                    width: "auto",
+                    height: "auto",
+                    margin: "0px",
+                  }}
                 >
                   <source
                     src={
@@ -175,7 +206,9 @@ export const Post = ({ props, page }) => {
                 </video>
               </Container>
             ) : hint.hint === "link" ? (
-              <a href={props.url}>{props.url}</a>
+              <a href={props.url} style={{ wordWrap: "break-word" }}>
+                {props.url}
+              </a>
             ) : props.post_hint === undefined ? (
               <p>{props.title}</p>
             ) : null}

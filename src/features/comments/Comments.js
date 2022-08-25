@@ -9,7 +9,8 @@ import {
 import { useParams } from "react-router-dom";
 
 import { Container, Grid } from "@mui/material";
-import { Post } from "../../components/post/Post";
+// import { Post } from "../../components/post/Post";
+import { Post } from "../../components/post/post";
 import { Comment } from "../../components/comment/Comment";
 
 import { v4 } from "uuid";
@@ -27,17 +28,27 @@ export const Comments = () => {
 
   if (loading) {
     return (
-      <Container
-        sx={{ marginTop: "50vh", marginLeft: "45vw", position: "absolute" }}
-      >
-        <SyncLoader color="blue" />
-      </Container>
+      <SyncLoader
+        color="blue"
+        style={{ top: "50%", left: "50%", position: "absolute" }}
+      />
     );
   }
   if (typeof comments !== "undefined") {
     return (
       <>
-        <Container>
+        {/* <Container
+          style={{
+            cursor: "pointer",
+            paddingLeft: "0px ",
+            paddingRight: "0px ",
+            "& .MuiContainer-root": {
+              paddingLeft: "0px ",
+              paddingRight: "0px ",
+            },
+          }}
+        > */}
+        <Container align="center">
           <Grid
             container
             spacing={2}
@@ -51,6 +62,7 @@ export const Comments = () => {
             })}
           </Grid>
         </Container>
+        {/* </Container> */}
       </>
     );
   }
