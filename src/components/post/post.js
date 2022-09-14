@@ -41,7 +41,7 @@ export const Post = ({ props, page }) => {
                 cursor: "pointer",
                 paddingLeft: "0px ",
                 paddingRight: "0px ",
-                "& .MuiContainer-root": {
+                "& .MuiContainerRoot": {
                   paddingLeft: "0px ",
                   paddingRight: "0px ",
                 },
@@ -146,7 +146,7 @@ export const Post = ({ props, page }) => {
     );
   }
   // comments page
-  if (page === "comments") {
+  if (page === "comments" && props.data) {
     return (
       <>
         <Grid item xs={12} xl={12}>
@@ -157,6 +157,7 @@ export const Post = ({ props, page }) => {
               style={{ color: "gray", marginLeft: "10px" }}
             >
               posted by {props.data.children[0].data.author}
+              {/* posted by {props.author} */}
             </Typography>
             <Typography
               component={"h4"}
@@ -169,7 +170,7 @@ export const Post = ({ props, page }) => {
               <Container align="center">
                 <img
                   src={props.data.children[0].data.url}
-                  alt={props.title}
+                  alt={props.data.children[0].data.title}
                   style={{
                     maxWidth: "80vw",
                     maxHeight: "80vh",

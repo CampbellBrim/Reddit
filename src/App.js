@@ -26,6 +26,10 @@ function App() {
         position="relative"
         sx={{ marginBottom: "10px", maxHeight: "900px" }}
       >
+        {/* <select>
+          <option>option1</option>
+          <option>option2</option>
+        </select> */}
         <Grid container direction={"row"}>
           <Grid item xs={3} sm={3} md={4} lg={4} xl={4}>
             <nav>
@@ -65,17 +69,21 @@ function App() {
             <div></div>
           </Grid>
           <Grid item xs={3} sm={3} md={4} lg={4} xl={4}>
-            <FormControl fullWidth variant="filled">
-              <InputLabel>subreddit</InputLabel>
-              <Select onChange={handleChange} value={subreddit}>
-                <MenuItem value={"r/funny"}>r/funny</MenuItem>
-                <MenuItem value={"r/popular"}>r/popular</MenuItem>
-                <MenuItem value={"r/gaming"}>r/gaming</MenuItem>
-                <MenuItem value={"r/aww"}>r/aww</MenuItem>
-                <MenuItem value={"r/science"}>r/science</MenuItem>
-                <MenuItem value={"r/announcements"}>r/announcements</MenuItem>
-              </Select>
-            </FormControl>
+            {/* <FormControl fullWidth variant="filled"> */}
+            {/* <InputLabel>subreddit</InputLabel> */}
+            <Select onChange={handleChange} value={subreddit}>
+              {/* <select onChange={handleChange} value={subreddit}> */}
+              {/* <option value={"r/funnny"}>r/funny</option> */}
+              {/* <option value={"r/popular"}>r/popular</option> */}
+              <MenuItem value={"r/funny"}>r/funny</MenuItem>
+              <MenuItem value={"r/popular"}>r/popular</MenuItem>
+              <MenuItem value={"r/gaming"}>r/gaming</MenuItem>
+              <MenuItem value={"r/aww"}>r/aww</MenuItem>
+              <MenuItem value={"r/science"}>r/science</MenuItem>
+              <MenuItem value={"r/announcements"}>r/announcements</MenuItem>
+              {/* </select> */}
+            </Select>
+            {/* </FormControl> */}
           </Grid>
         </Grid>
       </AppBar>
